@@ -6,6 +6,7 @@ http://localhost:8080/springdemo20201220/springdemo/greeting?name=tony1
 
 springframework: web/webmvc/test 
 jackson: core/databind/annotation
+
 plugin: 
   - maven-war-plugin, setup outputDirectory for war target folder
   - tomcat7-maven-plugin, embeded app server
