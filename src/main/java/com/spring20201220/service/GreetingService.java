@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class GreetingService {
     public GreetingWord getGreetingWord(String name){
-        if(name.equals("tony")){
+        if(name.equals("GreetingNotfoundException")){
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Foo Not Found", new GreetingNotfoundException("Not found greeting"));
         }else{
