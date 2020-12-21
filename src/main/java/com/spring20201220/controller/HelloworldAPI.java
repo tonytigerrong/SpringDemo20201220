@@ -11,6 +11,6 @@ public class HelloworldAPI {
             produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public GreetingWord greeting(@RequestParam("name") String name){
 
-        return new GreetingWord(name,"Hi ");
+        return new GreetingWord("Hi ",name);
     }
 }
