@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.spring20201220.controller")
+@ComponentScan(basePackages = "com.spring20201220")
 public class AppConfig {
     @Bean
     public View jsonTemplate() {
