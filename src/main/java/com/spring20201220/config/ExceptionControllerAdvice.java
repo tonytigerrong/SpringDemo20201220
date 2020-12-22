@@ -9,13 +9,18 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 
 @ControllerAdvice
 public class ExceptionControllerAdvice {
     @ExceptionHandler(value = { GreetingNotfoundException.class })
     public ResponseEntity<Exception404Msg> requestNotAvairable(HttpServletRequest request , Exception ex){
-//        return new Exception404Msg(404,"Not Found");
         return new ResponseEntity<Exception404Msg>(
-                new Exception404Msg(404,"Not Found"), new HttpHeaders(), HttpStatus.NOT_FOUND);
+                new Exception404Msg(4004,"Not Found"), new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(value = { ConstraintViolationException.class })
+    public ResponseEntity<Exception404Msg> validationError(HttpServletRequest request, Exception ex){
+        return new ResponseEntity<>( new Exception404Msg(4005,"validation error"), new HttpHeaders(), HttpStatus.NOT_ACCEPTABLE);
     }
 }

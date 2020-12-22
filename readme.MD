@@ -12,4 +12,6 @@ plugin:
   - tomcat7-maven-plugin, embeded app server
   - maven-compiler-plugin, default pom.xl plugin for compiler
 
+[custom validator annotation]
+
 

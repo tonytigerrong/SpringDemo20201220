@@ -14,6 +14,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring.version>5.1.0.RELEASE</spring.version>
         <jackson.version>2.12.0</jackson.version>
+        <hibernate.validator.version>6.0.10.Final</hibernate.validator.version>
         <!--buildDirectory>file:///C:/DevEnv/apache-tomcat-8.5.56/webapps</buildDirectory-->
     </properties>
     <dependencies>
@@ -93,6 +94,17 @@
             <version>${jackson.version}</version>
         </dependency>
 
+        <!-- custom validator-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.glassfish </groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b11</version>
+        </dependency-->
     </dependencies>
     <distributionManagement>
         <repository>
