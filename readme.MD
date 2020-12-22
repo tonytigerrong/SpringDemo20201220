@@ -22,6 +22,7 @@ plugin:
         "email": "1234",
         "emailConfirm": "1234" //1234 pass validation; 12341 not pass validation
     }
+    
 [interceptor]
   - create a custom interceptor via extends HandlerInterceptorAdapter ( preHandle / postHandle / afterCompletion)
   - register the interceptor via implements method of addInterceptors in WebMvcConfigurer
