@@ -22,6 +22,7 @@ public class AppConfig {
     public MethodValidationPostProcessor methodValidationPostProcessor() {
         return new MethodValidationPostProcessor();
     }
+
 //    @Bean
 //    public ViewResolver viewResolver() {
 //        return new BeanNameViewResolver();

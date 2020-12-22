@@ -4,5 +4,12 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
-
+    <filter>
+        <filter-name>CheckReqFilter</filter-name>
+        <filter-class>com.spring20201220.filter.CheckReqFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CheckReqFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

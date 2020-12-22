@@ -27,3 +27,8 @@ plugin:
   - create a custom interceptor via extends HandlerInterceptorAdapter ( preHandle / postHandle / afterCompletion)
   - register the interceptor via implements method of addInterceptors in WebMvcConfigurer
  
+[filter]
+
+
+[filter vs interceptor]
+  - request/response <-> servlet container <-> servlet filter <-> dispatcher <-> interceptor <-> response controller
