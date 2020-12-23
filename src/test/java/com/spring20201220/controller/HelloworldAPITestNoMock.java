@@ -1,5 +1,8 @@
 package com.spring20201220.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.spring20201220.model.EmailRegisterForm;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,4 +60,36 @@ public class HelloworldAPITestNoMock {
         Assert.assertEquals(jsonObject.get("greetingStart"), "Hi ");
 
     }
+
+    @Test
+    public void emailCombinationValidation() throws Exception {
+        EmailRegisterForm goodEmailRegisterForm = new EmailRegisterForm("123@123","123@123");
+        EmailRegisterForm badEmailRegisterForm = new EmailRegisterForm("1123@123","123@123");
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE,false);
+        String jsonGoodBody = mapper.writeValueAsString(goodEmailRegisterForm);
+        String jsonBadBody = mapper.writeValueAsString(badEmailRegisterForm);
+        ResultActions rs1 = this.mvc.perform(
+                MockMvcRequestBuilders.post("/email")
+                        .contentType("application/json")
+                        .content(jsonGoodBody));
+
+        MvcResult result1 = rs1.andReturn();
+        String body1 = result1.getResponse().getContentAsString();
+        JSONObject jsonObject1 = new JSONObject(body1);
+        System.out.println("****"+body1);
+        Assert.assertEquals(jsonObject1.get("email"), "123@123");
+
+        ResultActions rs2 = this.mvc.perform(
+                MockMvcRequestBuilders.post("/email")
+                        .contentType("application/json")
+                        .content(jsonBadBody));
+
+        MvcResult result2 = rs2.andReturn();
+        String body2 = result2.getResponse().getContentAsString();
+        JSONObject jsonObject2 = new JSONObject(body2);
+        System.out.println("****"+body2);
+        Assert.assertEquals(jsonObject2.get("status"), 4006);
+    }
+
 }
