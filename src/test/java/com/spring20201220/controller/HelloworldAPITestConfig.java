@@ -1,4 +1,4 @@
-package com.spring20201220.config;
+package com.spring20201220.controller;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.spring20201220")
-public class AppConfig {
+public class HelloworldAPITestConfig {
     @Bean
     public View jsonTemplate() {
         MappingJackson2JsonView view = new MappingJackson2JsonView();
@@ -22,18 +22,4 @@ public class AppConfig {
     public MethodValidationPostProcessor methodValidationPostProcessor() {
         return new MethodValidationPostProcessor();
     }
-//    @Bean
-//    public FilterRegistrationBean<CheckReqFilter> filterRegistrationBean() {
-//        FilterRegistrationBean < CheckReqFilter > registrationBean = new FilterRegistrationBean();
-//        CheckReqFilter checkReqFilter = new CheckReqFilter();
-//
-//        registrationBean.setFilter(checkReqFilter);
-//        registrationBean.addUrlPatterns("/*");
-//        registrationBean.setOrder(2); //set precedence
-//        return registrationBean;
-//    }
-//    @Bean
-//    public ViewResolver viewResolver() {
-//        return new BeanNameViewResolver();
-//    }
 }

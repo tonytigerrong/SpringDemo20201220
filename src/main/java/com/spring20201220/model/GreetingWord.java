@@ -25,4 +25,12 @@ public class GreetingWord {
         this.greetingStart = greetingStart;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "GreetingWord{" +
+                "greetingStart='" + greetingStart + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

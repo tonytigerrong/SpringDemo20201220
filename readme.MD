@@ -28,7 +28,14 @@ plugin:
   - register the interceptor via implements method of addInterceptors in WebMvcConfigurer
  
 [filter]
-
+  - create a custom filter via implements Filter
+  - add filter listener in web.xml ( TBD : register the filter via @Configuration class)
 
 [filter vs interceptor]
   - request/response <-> servlet container <-> servlet filter <-> dispatcher <-> interceptor <-> response controller
+
+[Mock Controller unit test]
+  - unit test controller with/without mock service class which is dependency of controller
+  - Junit 5
+  
+  
