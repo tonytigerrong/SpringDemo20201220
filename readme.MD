@@ -38,4 +38,8 @@ plugin:
   - unit test controller with/without mock service class which is dependency of controller
   - Junit 5
   
-  
+[AOP demo]
+ @Advice/@Pointcut/@Before....
+ 
+[property injection]
+@Value(${key}) / PropertyPlaceholderConfiguration / 
