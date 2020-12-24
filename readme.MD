@@ -2,6 +2,7 @@
 
 Normal: http://localhost:8080/springdemo20201220/springdemo/greeting?name=tony1
 exception: http://localhost:8080/springdemo20201220/springdemo/greeting?name=GreetingNotfoundException
+
 [POM.xml]
 
 springframework: web/webmvc/test 
