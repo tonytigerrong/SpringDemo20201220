@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -35,25 +36,27 @@ public class HelloworldAPITestNoMock {
     @Autowired
     private WebApplicationContext wac;
 
-//    @Mock
-//    GreetingService mockGreetingService;
     private MockMvc mvc;
 
+    @Value("${defaultName}")
+    private String name;
+
+    @Value("${email1}")
+    String email1;
+
+    @Value("${email2}")
+    String email2;
+
+    String getUrl;
     @BeforeEach
     public void setup() throws Exception {
-//        MockitoAnnotations.initMocks(this);
         this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-
-//        mockGreetingService = org.mockito.Mockito.mock(GreetingService.class);
-//        when(mockGreetingService.getGreetingWord("tony")).thenReturn(new GreetingWord("Hii ","tony"));
+        this.getUrl = "/greeting?name="+this.name;
     }
     @Test
     public void greeting() throws Exception {
-//        GreetingWord hiiTony = mockGreetingService.getGreetingWord("tony");
-//        Assert.assertEquals(hiiTony.getGreetingStart(), "Hii ");
-
         ResultActions rs1 = this.mvc.perform(
-                MockMvcRequestBuilders.get("/greeting?name=tony")
+                MockMvcRequestBuilders.get(this.getUrl)
                                     .contentType("application/json")
         );
         MvcResult result = rs1.andReturn();
@@ -66,8 +69,8 @@ public class HelloworldAPITestNoMock {
 
     @Test
     public void emailCombinationValidation() throws Exception {
-        EmailRegisterForm goodEmailRegisterForm = new EmailRegisterForm("123@123","123@123");
-        EmailRegisterForm badEmailRegisterForm = new EmailRegisterForm("1123@123","123@123");
+        EmailRegisterForm goodEmailRegisterForm = new EmailRegisterForm(this.email1,this.email1);
+        EmailRegisterForm badEmailRegisterForm = new EmailRegisterForm(this.email1,this.email2);
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE,false);
         String jsonGoodBody = mapper.writeValueAsString(goodEmailRegisterForm);
@@ -81,7 +84,7 @@ public class HelloworldAPITestNoMock {
         String body1 = result1.getResponse().getContentAsString();
         JSONObject jsonObject1 = new JSONObject(body1);
         System.out.println("****"+body1);
-        Assert.assertEquals(jsonObject1.get("email"), "123@123");
+        Assert.assertEquals(jsonObject1.get("email"), this.email1);
 
         ResultActions rs2 = this.mvc.perform(
                 MockMvcRequestBuilders.post("/email")
