@@ -3,6 +3,7 @@ package com.spring20201220.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.spring20201220")
+@EnableAspectJAutoProxy
 public class AppConfig {
     @Bean
     public View jsonTemplate() {
