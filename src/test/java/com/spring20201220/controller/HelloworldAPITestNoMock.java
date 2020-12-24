@@ -2,6 +2,7 @@ package com.spring20201220.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.spring20201220.config.WebAppConfig;
 import com.spring20201220.model.EmailRegisterForm;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -27,7 +29,8 @@ import org.springframework.web.context.WebApplicationContext;
 @ExtendWith(SpringExtension.class)
 //@ExtendWith({MockitoExtension.class})
 @WebAppConfiguration
-@ContextConfiguration(classes = {HelloworldAPITestConfig.class})
+@ContextConfiguration(classes = {HelloworldAPITestConfig.class, WebAppConfig.class})
+@ActiveProfiles("test") //comment this, will not import WebAppConfig.class configuration setup
 public class HelloworldAPITestNoMock {
     @Autowired
     private WebApplicationContext wac;

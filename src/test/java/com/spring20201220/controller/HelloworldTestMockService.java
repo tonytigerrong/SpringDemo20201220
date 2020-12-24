@@ -1,5 +1,6 @@
 package com.spring20201220.controller;
 
+import com.spring20201220.config.WebAppConfig;
 import com.spring20201220.model.GreetingWord;
 import com.spring20201220.service.GreetingService;
 import org.json.JSONObject;
@@ -11,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -31,7 +33,8 @@ import static org.mockito.Mockito.when;
 @ExtendWith(SpringExtension.class)
 //@ExtendWith({MockitoExtension.class})
 @WebAppConfiguration
-@ContextConfiguration(classes = {HelloworldAPITestConfig.class})
+@ContextConfiguration(classes = {HelloworldAPITestConfig.class, WebAppConfig.class})
+@ActiveProfiles("test") // will not import WebAppConfig.class configuration, since this is mock test
 public class HelloworldTestMockService {
     @Autowired
     private WebApplicationContext wac;
